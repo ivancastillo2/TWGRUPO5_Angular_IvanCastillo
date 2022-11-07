@@ -1,0 +1,50 @@
+<hr />
+<h2>Detalle del Pedido</h2>
+
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            Id
+        </div>
+        <div class="col-10">
+            {{ pedido.id }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Descripción
+        </div>
+        <div class="col-10">
+            {{ pedido.desc }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Usuario
+        </div>
+        <div class="col-10">
+            {{pedido.user }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Fecha Pedido
+        </div>
+        <div class="col-10">
+            {{pedido.fechaPedido | date }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Entregado:
+        </div>
+        <div class="col-10">
+            <div *ngIf="pedido.entregado;else elseBlock">SI</div>
+            <ng-template #elseBlock> NO </ng-template>
+        </div>
+    </div>
+</div>
+
+<hr />
