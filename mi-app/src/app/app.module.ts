@@ -11,6 +11,7 @@ import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ItemPedidoComponent } from './lista-pedidos/item-pedido/item-pedido.component';
+import { LogService } from './servicios/log.service';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pedido } from '../model/pedido';
 import { LogService } from '../servicios/log.service';
+import { PedidosService } from '../servicios/pedidos.service';
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -14,32 +16,8 @@ export class ListaPedidosComponent implements OnInit {
   estadoListadoPedidos: String = 'noEntregado';
   modoNuevo: boolean = false;
 
-  constructor(private log:LogService) {
-
-    this.pedidos = [
-      {
-        id:1,
-        user: "luis",
-        desc: "pizza",
-        fechaPedido: new Date(),
-        entregado: false
-      },
-      {
-        id:2,
-        user: "luis",
-        desc: "Moto",
-        fechaPedido: new Date(),
-        entregado: true
-      },
-      {
-        id:3,
-        user: "Maite",
-        desc: "Camisa",
-        fechaPedido: new Date(),
-        entregado: false
-      }
-    ]
-
+  constructor(private log:LogService, private pedidosService: PedidosService, private router: Router) {
+    this.pedidos = pedidosService.getAll();
   }
 
   ngOnInit(): void {
@@ -47,11 +25,12 @@ export class ListaPedidosComponent implements OnInit {
 
   public onAltaPedido():void{
     this.log.info('Abrir formulario alta nuevo pedido');
+    this.router.navigate(['/pedido/edit']);
   }
 
   public onTerminoEntrega(id: number) {
     console.log(" me notifican que ha cambiado pedido " + id);
-    this.pedidos[id - 1].entregado = true;
+    this.pedidos = this.pedidosService.getAll();
   }
 
 }

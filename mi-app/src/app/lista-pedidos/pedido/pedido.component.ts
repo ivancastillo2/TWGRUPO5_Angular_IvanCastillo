@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Pedido } from 'src/app/model/pedido';
+import { PedidosService } from 'src/app/servicios/pedidos.service';
 
 @Component({
   selector: 'app-pedido',
@@ -8,15 +10,17 @@ import { Pedido } from 'src/app/model/pedido';
 })
 export class PedidoComponent implements OnInit {
 
-pedido: Pedido;
+  pedido: Pedido;
 
-  constructor() {
-    this.pedido = {id:1, 
+  constructor(private router: ActivatedRoute, 
+              private pedidosService: PedidosService) {
+    /*this.pedido = {id:1, 
                    desc:'Zapatos', 
                    entregado: false, 
                    fechaPedido: new Date(), 
-                   user: "Luis"};
-   }
+                   user: "Luis"};*/
+    this.pedido = this.pedidosService.getById(router.snapshot.params['id']);
+  }
 
   ngOnInit(): void {
   }
