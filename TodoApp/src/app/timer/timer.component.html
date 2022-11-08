@@ -1,0 +1,27 @@
+<div class="text-center">
+    <img src="assets/img/timer.png" alt="Timer">
+    <h1>
+        {{ minutes }}:{{ seconds | number:'2.0' }}
+    </h1>
+    <p>
+        <button class="btn btn-danger" (click)="togglePause()">{{ buttonLabel }}</button>
+    </p>
+</div>
+<hr/>
+<div class="container text-center">
+    <app-countdown-timer [seconds]="25"
+                         (progress)="counter.seconds = $event"
+                         (complete)="onCountdownCompleted()"
+                         #counter>
+    </app-countdown-timer>
+    <p>
+        <button class="btn btn-default"
+                 (click)="counter.seconds = 25">
+            reset
+        </button>
+    </p>
+    <p *ngIf="counter.seconds < 10">
+        Cuidado! solo quedan
+        <strong>{{ counter.seconds }} segundos</strong>
+    </p>
+</div>

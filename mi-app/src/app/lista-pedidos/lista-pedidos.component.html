@@ -6,10 +6,14 @@
     <ul class="list-group">
         <div *ngFor="let p of pedidos">
             <li class="list-group-item {{ p.entregado ? 'disabled' : '' }}">
-                {{ p.id }} {{ p.desc }} {{p.fechaPedido | date:'short':'UTC':'es'}}
+                <app-item-pedido 
+                    (entregaRealizada)="onTerminoEntrega($event)"
+                    [id]="p.id" descripcion="{{p.desc}}" 
+                    [entregado]="p.entregado"></app-item-pedido>
             </li>
         </div>
     </ul>
     <hr />
-    <button class="btn btn-primary" (click)="onAltaPedido()">Alta pedido</button>
+    <button class="btn btn-primary" (click)="onAltaPedido()"
+        [disabled]="!modoNuevo">Alta pedido</button>
 </div>

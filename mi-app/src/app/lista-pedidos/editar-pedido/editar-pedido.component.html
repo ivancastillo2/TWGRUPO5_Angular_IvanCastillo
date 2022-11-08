@@ -1,1 +1,12 @@
-<p>editar-pedido works!</p>
+<h2>Editar Pedido</h2>
+
+<label>Descripcion Pedido</label>
+<input type="text"
+(input)="onUpdateDescripcionPedido($event)"/>
+
+<p>{{pedido.desc}}</p>
+
+<label>Descripcion Pedido</label>
+<input type="text"
+[(ngModel)]="pedido.desc"/>
+<p>{{pedido.desc}}</p>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pedido } from 'src/app/model/pedido';
 
 @Component({
   selector: 'app-editar-pedido',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarPedidoComponent implements OnInit {
 
-  constructor() { }
+pedido: Pedido;
+
+  constructor() {
+    this.pedido = {
+      id: 0,
+      desc: '',
+      user: '',
+      fechaPedido: new Date(),
+      entregado: false
+    }
+  }
 
   ngOnInit(): void {
+  }
+
+  public onUpdateDescripcionPedido(event: any): void{
+    this.pedido.desc = event.target.value;
   }
 
 }
