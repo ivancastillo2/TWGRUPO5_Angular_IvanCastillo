@@ -11,7 +11,7 @@ import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ItemPedidoComponent } from './lista-pedidos/item-pedido/item-pedido.component';
-import { LogService } from './servicios/log.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import { LogService } from './servicios/log.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
